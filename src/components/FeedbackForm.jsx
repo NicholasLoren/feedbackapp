@@ -3,12 +3,11 @@ import Button from "./common/Button";
 import Card from "./common/card";
 import SelectRating from "./SelectRating";
 import { useContext, useEffect } from "react";
-import FeedbackContext from "./context/FeedbackContext";
-import uuid from "react-uuid";
+import FeedbackContext from "./context/FeedbackContext"; 
 
 const FeedbackForm = () => {
   const [text, setText] = useState("");
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(10);
   const [errorMsg, setErrorMsg] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const { addFeedBack, editItem, updateFeedbackItem } =
@@ -55,7 +54,7 @@ const FeedbackForm = () => {
     if (edit) {
       updateFeedbackItem(item.id, { text, rating });
     } else {
-      const newFeedback = { id: uuid(), text, rating };
+      const newFeedback = { text, rating };
       addFeedBack(newFeedback);
       console.log(newFeedback);
     }
