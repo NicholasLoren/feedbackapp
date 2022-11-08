@@ -25,7 +25,9 @@ export const FeedbackProvider = ({ children }) => {
       const response = await fetch(`/feedback/${id}`, {
         method: "DELETE",
       });
-      setFeedback(feedback.filter((item) => item.id !== id));
+      const data = await response.json();
+
+      setFeedback(feedback.filter((item) => item.id !== data.id));
     }
   };
   // Creating a new feed back item
